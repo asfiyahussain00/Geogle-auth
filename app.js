@@ -80,6 +80,28 @@ document.getElementById('signup-btn')?.addEventListener('click' , () =>{
 
     })
 
+
+
+
+// Reset Password
+document.getElementById('reset-password-link')?.addEventListener('click', (e) => {
+  e.preventDefault();
+  let email = prompt('Enter your email');
+  if (email) {
+    sendPasswordResetEmail(auth, email)
+    .then(() => {
+      alert('Password Reset. Check your email');
+    })
+    .catch((error) => {
+      alert(error.message);
+    });
+  }
+  else{
+    alert('enter your valid password')
+  }
+});
+
+
    // Show User Email on Welcome Page
 onAuthStateChanged(auth, (user) => {
   if (user && window.location.pathname.includes("welcome.html")) {
